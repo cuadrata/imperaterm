@@ -28,6 +28,7 @@ typedef struct Tab Tab;
 /* A window, and the one area in which whichever of its tabs is shown is drawn. */
 struct Win {
     GtkWidget *window, *menubar, *notebook, *popup, *tabmenu, *gl, *sbar;
+    GtkWidget *ticks[4];  /* Menubar and Scrollbar in the View menu, then in the right button's */
     GtkAdjustment *adj;
     GtkIMContext *im;
     Tab *cur, *sel;  /* the tab that is shown, and the one the primary selection is in */

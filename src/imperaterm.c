@@ -183,14 +183,24 @@ save(void)
     fclose(f);
 }
 
+static int ticking;  /* the menus' check items are being set to the settings, which is no choice of the user's */
+
 /* The settings take effect in every terminal there is. */
 /* A window's tabs are over its terminal or under it, and its menubar and
- * scrollbar are there or not, as the settings have it. */
+ * scrollbar are there or not, as the settings have it, and so are the
+ * check items in its menus. */
 static void
 place(Win *w)
 {
+    int i;
+
     (cfg.menubar ? gtk_widget_show : gtk_widget_hide)(w->menubar);
     (cfg.scrollbar ? gtk_widget_show : gtk_widget_hide)(w->sbar);
+    ticking++;
+    for (i = 0; i < (int)LEN(w->ticks); i++)
+        if (w->ticks[i])
+            gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(w->ticks[i]), i % 2 ? cfg.scrollbar : cfg.menubar);
+    ticking--;
     gtk_notebook_set_tab_pos(GTK_NOTEBOOK(w->notebook), cfg.tabsbelow ? GTK_POS_BOTTOM : GTK_POS_TOP);
     gtk_box_reorder_child(GTK_BOX(w->notebook->parent), w->notebook, cfg.tabsbelow ? 2 : 1);  /* the menubar is first */
 }
@@ -848,14 +858,14 @@ act(gpointer data, guint action, GtkWidget *item)
         break;
     case PREFS: prefs(w); break;
     case MENUBAR: case SCROLLBAR:  /* in every window, and kept */
+        if (ticking)
+            break;
         if (action == MENUBAR)
             cfg.menubar = !cfg.menubar;
         else
             cfg.scrollbar = !cfg.scrollbar;
-        for (l = wins; l; l = l->next) {
-            (cfg.menubar ? gtk_widget_show : gtk_widget_hide)(((Win *)l->data)->menubar);
-            (cfg.scrollbar ? gtk_widget_show : gtk_widget_hide)(((Win *)l->data)->sbar);
-        }
+        for (l = wins; l; l = l->next)
+            place(l->data);
         prefs_says(pfmenubar, &cfg.menubar);  /* Preferences, if it is open, says so too */
         prefs_says(pfscrollbar, &cfg.scrollbar);
         save();
@@ -894,8 +904,8 @@ static GtkItemFactoryEntry menu[] = {
     { "/Edit/sep2", NULL, NULL, 0, "<Separator>" },
     { N_("/Edit/Pr_eferences..."), NULL, ACT(PREFS), NULL },
     { N_("/_View"), NULL, NULL, 0, "<Branch>" },
-    { N_("/View/_Menubar"), NULL, ACT(MENUBAR), NULL },
-    { N_("/View/_Scrollbar"), NULL, ACT(SCROLLBAR), NULL },
+    { N_("/View/_Menubar"), NULL, ACT(MENUBAR), "<CheckItem>" },
+    { N_("/View/_Scrollbar"), NULL, ACT(SCROLLBAR), "<CheckItem>" },
     { "/View/sep", NULL, NULL, 0, "<Separator>" },
     { N_("/View/Zoom _In"), "<control>plus", ACT(ZOOMIN), NULL },
     { N_("/View/Zoom _Out"), "<control>minus", ACT(ZOOMOUT), NULL },
@@ -921,8 +931,8 @@ static GtkItemFactoryEntry popup[] = {
     { N_("/Close Tab"), NULL, ACT(CLOSETAB), NULL },
     { N_("/Rename Tab..."), NULL, ACT(NAMETAB), NULL },
     { "/sep2", NULL, NULL, 0, "<Separator>" },
-    { N_("/Menubar"), NULL, ACT(MENUBAR), NULL },
-    { N_("/Scrollbar"), NULL, ACT(SCROLLBAR), NULL },
+    { N_("/Menubar"), NULL, ACT(MENUBAR), "<CheckItem>" },
+    { N_("/Scrollbar"), NULL, ACT(SCROLLBAR), "<CheckItem>" },
     { N_("/Preferences..."), NULL, ACT(PREFS), NULL }
 };
 
@@ -994,6 +1004,7 @@ win_new(char **argv, const char *dir, char **env, Tab *tb)
     GtkItemFactory *pop = gtk_item_factory_new(GTK_TYPE_MENU, "<popup>", NULL);
     GtkItemFactory *tab = gtk_item_factory_new(GTK_TYPE_MENU, "<tab>", NULL);
     GtkWidget *vbox = gtk_vbox_new(FALSE, 0);
+    int i;
 
     gtk_item_factory_set_translate_func(bar, translate, NULL, NULL);
     gtk_item_factory_set_translate_func(pop, translate, NULL, NULL);
@@ -1016,6 +1027,13 @@ win_new(char **argv, const char *dir, char **env, Tab *tb)
     w->menubar = gtk_item_factory_get_widget(bar, "<main>");
     w->popup = gtk_item_factory_get_widget(pop, "<popup>");
     w->tabmenu = gtk_item_factory_get_widget(tab, "<tab>");
+    w->ticks[0] = gtk_item_factory_get_widget(bar, "/View/Menubar");
+    w->ticks[1] = gtk_item_factory_get_widget(bar, "/View/Scrollbar");
+    w->ticks[2] = gtk_item_factory_get_widget(pop, "/Menubar");
+    w->ticks[3] = gtk_item_factory_get_widget(pop, "/Scrollbar");
+    for (i = 0; i < (int)LEN(w->ticks); i++)
+        if (w->ticks[i])
+            gtk_check_menu_item_set_show_toggle(GTK_CHECK_MENU_ITEM(w->ticks[i]), TRUE);
 
     w->notebook = gtk_notebook_new();
     GTK_WIDGET_UNSET_FLAGS(w->notebook, GTK_CAN_FOCUS);
