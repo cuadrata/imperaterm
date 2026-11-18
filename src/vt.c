@@ -1153,7 +1153,7 @@ keeplen(Term *t, const Cell *l)
 void
 vt_resize(Term *t, int cols, int rows)
 {
-    int ocols = t->cols, orows = t->rows, alt = ALT(t), cap, x, y, len, wrapped, last;
+    int ocols = t->cols, orows = t->rows, alt = ALT(t), cap, x, y, len, wrapped, last, live;
     int ny = 0, nx = 0, cy = -1, cx = 0;
     Cursor *c = alt ? &t->saved[0] : &t->c;
     Cell *nb, *na, *l, *d, g, **nl, **nal, **ns;
@@ -1179,12 +1179,35 @@ vt_resize(Term *t, int cols, int rows)
     for (y = 0; y < MIN(rows, orows); y++)  /* the alternate screen is cut to fit */
         memcpy(nal[y], t->altline[y], MIN(cols, ocols) * sizeof *na);
 
-    /* The scrollback and the screen are one text, wrapped at the new width. */
+    /*
+     * The scrollback and the screen are one text, wrapped at the new width,
+     * but for the line the cursor is on. A shell redraws that line itself
+     * when the size changes, and it counts its rows as they were: wrapped
+     * anew under it, the start of the prompt would be left behind above
+     * the redrawn one. So its rows stay rows, cut or filled out to the new
+     * width.
+     */
     t->mode &= ~M_ALT;
     for (last = orows - 1; last > c->y && !keeplen(t, row(t, last)); last--);
+    for (live = c->y; live > -t->hist && (row(t, live - 1)[ocols - 1].u & A_WRAP); live--);
     d = nb;
     for (y = -t->hist; y <= last; y++) {
         l = row(t, y);
+        if (y >= live) {
+            len = MIN(ocols, cols);
+            memcpy(d, l, len * sizeof *d);
+            for (x = 0; x < len; x++)
+                d[x].u &= ~A_WRAP;
+            if (d[len - 1].u & A_WIDE)  /* half a wide character is none */
+                memset(&d[len - 1], 0, sizeof *d);
+            if (y == c->y)
+                cy = ny, cx = MIN(c->x, cols - 1);
+            if (y < last) {
+                d = nb + (size_t)(++ny % cap) * cols;
+                memset(d, 0, cols * sizeof *d);
+            }
+            continue;
+        }
         wrapped = l[ocols - 1].u & A_WRAP;
         len = keeplen(t, l);
         if (y == c->y)

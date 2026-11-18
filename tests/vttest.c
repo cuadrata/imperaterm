@@ -223,6 +223,30 @@ main(void)
     EQ("tall cursor", t->c.y, 2);
     vt_free(t);
 
+    /*
+     * The line the cursor is on keeps its rows, cut to the width, for the
+     * shell redraws it: as bash does, back to its first row and over it.
+     */
+    t = mk(12, 4, 100);
+    feed(t, "out\r\nhost:/a/b/c$ ");
+    EQ("prompt wraps", t->c.y * 100 + t->c.x, 201);
+    vt_resize(t, 6, 4);
+    IS("history is wrapped", text(t, 0), "out");
+    IS("the cursor's line is cut", text(t, 1), "host:/");
+    IS("and not wrapped", text(t, 2), " ");
+    EQ("cut cursor", t->c.y * 100 + t->c.x, 201);
+    feed(t, "\r\033[K\033[1Ahost:/a/b/c$ ");
+    IS("redrawn 1", text(t, 0), "out");
+    IS("redrawn 2", text(t, 1), "host:/");
+    IS("redrawn 3", text(t, 2), "a/b/c$");
+    vt_resize(t, 20, 4);
+    IS("filled out 1", text(t, 1), "host:/");
+    IS("filled out 2", text(t, 2), "a/b/c$");
+    feed(t, "\r\033[K\033[2Ahost:/a/b/c$ \033[J");
+    IS("redrawn wide 1", text(t, 1), "host:/a/b/c$ ");
+    IS("nothing left behind", text(t, 2), "");
+    vt_free(t);
+
     /* Selecting: by character, by word across a wrap, by line, and a block. */
     t = mk(10, 4, 100);
     feed(t, "one two\r\nfoo-bar baz_quux\r\nlast");
