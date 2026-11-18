@@ -1,0 +1,368 @@
+# Russian translation of Imperaterm.
+# Copyright (C) 2026 The CGTK authors
+# This file is distributed under the same license as the imperaterm package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: imperaterm 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-18 05:01+0000\n"
+"PO-Revision-Date: 2026-11-14 12:00+0000\n"
+"Last-Translator: The CGTK authors\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: src/imperaterm.c:52
+msgid "Default (Dark)"
+msgstr "По умолчанию (тёмная)"
+
+#: src/imperaterm.c:55
+msgid "Default (Light)"
+msgstr "По умолчанию (светлая)"
+
+#: src/imperaterm.c:81
+msgid "Custom"
+msgstr "Особая"
+
+#: src/imperaterm.c:216
+msgid "imperaterm: no font\n"
+msgstr "imperaterm: нет шрифта\n"
+
+#: src/imperaterm.c:308 src/imperaterm.c:970
+msgid "Terminal"
+msgstr "Терминал"
+
+#: src/imperaterm.c:511
+msgid "Rename Tab"
+msgstr "Переименовать вкладку"
+
+#: src/imperaterm.c:526
+msgid "Name:"
+msgstr "Имя:"
+
+#: src/imperaterm.c:528
+msgid "With no name, the tab names itself."
+msgstr "Без имени вкладка называет себя сама."
+
+#: src/imperaterm.c:532
+msgid "OK"
+msgstr "ОК"
+
+#: src/imperaterm.c:535
+msgid "Cancel"
+msgstr "Отмена"
+
+#: src/imperaterm.c:851
+msgid "/_File"
+msgstr "/_Файл"
+
+#: src/imperaterm.c:852
+msgid "/File/New _Tab"
+msgstr "/Файл/Новая _вкладка"
+
+#: src/imperaterm.c:853
+msgid "/File/New _Window"
+msgstr "/Файл/Новое _окно"
+
+#: src/imperaterm.c:855
+msgid "/File/_Close Tab"
+msgstr "/Файл/_Закрыть вкладку"
+
+#: src/imperaterm.c:856
+msgid "/File/Close W_indow"
+msgstr "/Файл/Закрыть о_кно"
+
+#: src/imperaterm.c:857
+msgid "/_Edit"
+msgstr "/_Правка"
+
+#: src/imperaterm.c:858
+msgid "/Edit/_Copy"
+msgstr "/Правка/_Копировать"
+
+#: src/imperaterm.c:859
+msgid "/Edit/_Paste"
+msgstr "/Правка/Вст_авить"
+
+#: src/imperaterm.c:861
+msgid "/Edit/_Reset"
+msgstr "/Правка/_Сбросить"
+
+#: src/imperaterm.c:863
+msgid "/Edit/Pr_eferences..."
+msgstr "/Правка/_Параметры..."
+
+#: src/imperaterm.c:864
+msgid "/_View"
+msgstr "/_Вид"
+
+#: src/imperaterm.c:865
+msgid "/View/_Menubar"
+msgstr "/Вид/Строка _меню"
+
+#: src/imperaterm.c:866
+msgid "/View/_Scrollbar"
+msgstr "/Вид/_Полоса прокрутки"
+
+#: src/imperaterm.c:868
+msgid "/View/Zoom _In"
+msgstr "/Вид/_Увеличить"
+
+#: src/imperaterm.c:869
+msgid "/View/Zoom _Out"
+msgstr "/Вид/Ум_еньшить"
+
+#: src/imperaterm.c:870
+msgid "/View/_Normal Size"
+msgstr "/Вид/_Обычный размер"
+
+#: src/imperaterm.c:871
+msgid "/_Tabs"
+msgstr "/В_кладки"
+
+#: src/imperaterm.c:872
+msgid "/Tabs/_Previous Tab"
+msgstr "/Вкладки/_Предыдущая вкладка"
+
+#: src/imperaterm.c:873
+msgid "/Tabs/_Next Tab"
+msgstr "/Вкладки/_Следующая вкладка"
+
+#: src/imperaterm.c:875
+msgid "/Tabs/Move Tab _Left"
+msgstr "/Вкладки/Переместить вкладку в_лево"
+
+#: src/imperaterm.c:876
+msgid "/Tabs/Move Tab _Right"
+msgstr "/Вкладки/Переместить вкладку вп_раво"
+
+#: src/imperaterm.c:878
+msgid "/Tabs/Rename _Tab..."
+msgstr "/Вкладки/Пере_именовать вкладку..."
+
+#: src/imperaterm.c:879
+msgid "/_Help"
+msgstr "/_Справка"
+
+#: src/imperaterm.c:880
+msgid "/Help/_About"
+msgstr "/Справка/_О программе"
+
+#: src/imperaterm.c:884
+msgid "/Copy"
+msgstr "/Копировать"
+
+#: src/imperaterm.c:885
+msgid "/Paste"
+msgstr "/Вставить"
+
+#: src/imperaterm.c:887
+msgid "/New Tab"
+msgstr "/Новая вкладка"
+
+#: src/imperaterm.c:888
+msgid "/New Window"
+msgstr "/Новое окно"
+
+#: src/imperaterm.c:889 src/imperaterm.c:901
+msgid "/Close Tab"
+msgstr "/Закрыть вкладку"
+
+#: src/imperaterm.c:890 src/imperaterm.c:899
+msgid "/Rename Tab..."
+msgstr "/Переименовать вкладку..."
+
+#: src/imperaterm.c:892
+msgid "/Menubar"
+msgstr "/Строка меню"
+
+#: src/imperaterm.c:893
+msgid "/Scrollbar"
+msgstr "/Полоса прокрутки"
+
+#: src/imperaterm.c:894
+msgid "/Preferences..."
+msgstr "/Параметры..."
+
+#: src/imperaterm.c:1210
+msgid "Colour"
+msgstr "Цвет"
+
+#: src/imperaterm.c:1267
+msgid "Black"
+msgstr "Чёрный"
+
+#: src/imperaterm.c:1267
+msgid "Red"
+msgstr "Красный"
+
+#: src/imperaterm.c:1267
+msgid "Green"
+msgstr "Зелёный"
+
+#: src/imperaterm.c:1267
+msgid "Yellow"
+msgstr "Жёлтый"
+
+#: src/imperaterm.c:1267
+msgid "Blue"
+msgstr "Синий"
+
+#: src/imperaterm.c:1267
+msgid "Magenta"
+msgstr "Пурпурный"
+
+#: src/imperaterm.c:1268
+msgid "Cyan"
+msgstr "Голубой"
+
+#: src/imperaterm.c:1268
+msgid "White"
+msgstr "Белый"
+
+#: src/imperaterm.c:1268
+msgid "Text"
+msgstr "Текст"
+
+#: src/imperaterm.c:1268
+msgid "Background"
+msgstr "Фон"
+
+#: src/imperaterm.c:1268
+msgid "Cursor"
+msgstr "Курсор"
+
+#: src/imperaterm.c:1278
+msgid "Custom Colours"
+msgstr "Особые цвета"
+
+#: src/imperaterm.c:1287
+msgid "Normal"
+msgstr "Обычные"
+
+#: src/imperaterm.c:1288
+msgid "Bright"
+msgstr "Яркие"
+
+#: src/imperaterm.c:1297
+msgid "Copy from..."
+msgstr "Копировать из..."
+
+#: src/imperaterm.c:1303 src/imperaterm.c:1395 src/imperaterm.c:1417
+msgid "Close"
+msgstr "Закрыть"
+
+#: src/imperaterm.c:1340
+msgid "Block"
+msgstr "Блок"
+
+#: src/imperaterm.c:1340
+msgid "Underline"
+msgstr "Подчёркивание"
+
+#: src/imperaterm.c:1340
+msgid "Bar"
+msgstr "Вертикальная черта"
+
+#: src/imperaterm.c:1351
+msgid "Terminal Preferences"
+msgstr "Настройки терминала"
+
+#: src/imperaterm.c:1372
+msgid "Font:"
+msgstr "Шрифт:"
+
+#: src/imperaterm.c:1373
+msgid "Size:"
+msgstr "Размер:"
+
+#: src/imperaterm.c:1379
+msgid "Custom..."
+msgstr "Особая..."
+
+#: src/imperaterm.c:1382
+msgid "Colours:"
+msgstr "Цвета:"
+
+#: src/imperaterm.c:1383
+msgid "Cursor:"
+msgstr "Курсор:"
+
+#: src/imperaterm.c:1384
+msgid "Blinking cursor"
+msgstr "Мигающий курсор"
+
+#: src/imperaterm.c:1385
+msgid "Scrollback lines:"
+msgstr "Строк прокрутки:"
+
+#: src/imperaterm.c:1386
+msgid "Audible bell"
+msgstr "Звуковой сигнал"
+
+#: src/imperaterm.c:1387
+msgid "Tabs at the bottom"
+msgstr "Вкладки внизу"
+
+#: src/imperaterm.c:1388
+msgid "Menubar"
+msgstr "Строка меню"
+
+#: src/imperaterm.c:1391
+msgid "Scrollbar"
+msgstr "Полоса прокрутки"
+
+#: src/imperaterm.c:1406
+msgid "A terminal emulator for CGTK, drawn with OpenGL."
+msgstr "Эмулятор терминала для CGTK, рисующий с помощью OpenGL."
+
+#: src/imperaterm.c:1407
+msgid "GL Version String:"
+msgstr "Строка версии GL:"
+
+#: src/imperaterm.c:1408
+msgid "The terminal's logic derives from st, (C) the st engineers."
+msgstr "Логика терминала происходит от st, (C) разработчики st."
+
+#: src/imperaterm.c:1410
+msgid "About Imperaterm"
+msgstr "О программе Imperaterm"
+
+#: src/imperaterm.c:1454
+msgid ""
+"Usage: imperaterm [--separate] [-e command [arguments]]\n"
+"  -e command   run the command, not the shell, in the first tab\n"
+"  --separate   be an Imperaterm of its own, not a window of the one that "
+"runs\n"
+"  --version    print the version"
+msgstr ""
+"Использование: imperaterm [--separate] [-e команда [аргументы]]\n"
+"  -e команда   выполнить команду вместо оболочки в первой вкладке\n"
+"  --separate   отдельный Imperaterm, а не окно уже запущенного\n"
+"  --version    показать версию"
+
+#: src/imperaterm.c:1478
+#, c-format
+msgid "imperaterm: %s is not an option; see imperaterm --help\n"
+msgstr "imperaterm: %s не является параметром; см. imperaterm --help\n"
+
+#: src/imperaterm.c:1482
+msgid "imperaterm: OpenGL is not available on this display\n"
+msgstr "imperaterm: OpenGL недоступен на этом дисплее\n"
+
+#: src/term.c:798 src/term.c:985
+msgid ""
+"imperaterm: OpenGL 3.1 or OpenGL ES 3.0 is needed, and neither is here\n"
+msgstr ""
+"imperaterm: требуется OpenGL 3.1 или OpenGL ES 3.0, но нет ни того, ни "
+"другого\n"
+
+#: src/term.c:1049
+#, c-format
+msgid "imperaterm: no pty: %s\n"
+msgstr "imperaterm: нет pty: %s\n"

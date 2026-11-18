@@ -1,0 +1,24 @@
+[Desktop Entry]
+Type=Application
+Name=Imperaterm
+GenericName=Terminal Emulator
+GenericName[de]=Terminalemulator
+GenericName[es]=Emulador de terminal
+GenericName[fr]=Émulateur de terminal
+GenericName[ja]=ターミナルエミュレータ
+GenericName[pt_BR]=Emulador de terminal
+GenericName[ru]=Эмулятор терминала
+GenericName[zh_CN]=终端模拟器
+Comment=Use the command line
+Comment[de]=Die Befehlszeile verwenden
+Comment[es]=Usar la línea de comandos
+Comment[fr]=Utiliser la ligne de commande
+Comment[ja]=コマンドラインを使う
+Comment[pt_BR]=Usar a linha de comando
+Comment[ru]=Работа с командной строкой
+Comment[zh_CN]=使用命令行
+Exec=imperaterm
+Icon=imperaterm
+Terminal=false
+Categories=System;TerminalEmulator;
+StartupWMClass=Imperaterm

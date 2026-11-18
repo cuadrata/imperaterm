@@ -1,0 +1,365 @@
+# Chinese (simplified) translation of Imperaterm.
+# Copyright (C) 2026 The CGTK authors
+# This file is distributed under the same license as the imperaterm package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: imperaterm 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-18 05:01+0000\n"
+"PO-Revision-Date: 2026-11-14 12:00+0000\n"
+"Last-Translator: The CGTK authors\n"
+"Language-Team: Chinese (simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/imperaterm.c:52
+msgid "Default (Dark)"
+msgstr "默认 (深色)"
+
+#: src/imperaterm.c:55
+msgid "Default (Light)"
+msgstr "默认 (浅色)"
+
+#: src/imperaterm.c:81
+msgid "Custom"
+msgstr "自定义"
+
+#: src/imperaterm.c:216
+msgid "imperaterm: no font\n"
+msgstr "imperaterm: 没有字体\n"
+
+#: src/imperaterm.c:308 src/imperaterm.c:970
+msgid "Terminal"
+msgstr "终端"
+
+#: src/imperaterm.c:511
+msgid "Rename Tab"
+msgstr "重命名标签页"
+
+#: src/imperaterm.c:526
+msgid "Name:"
+msgstr "名称："
+
+#: src/imperaterm.c:528
+msgid "With no name, the tab names itself."
+msgstr "未命名时，标签页自行命名。"
+
+#: src/imperaterm.c:532
+msgid "OK"
+msgstr "确定"
+
+#: src/imperaterm.c:535
+msgid "Cancel"
+msgstr "取消"
+
+#: src/imperaterm.c:851
+msgid "/_File"
+msgstr "/文件(_F)"
+
+#: src/imperaterm.c:852
+msgid "/File/New _Tab"
+msgstr "/文件(F)/新建标签页(_T)"
+
+#: src/imperaterm.c:853
+msgid "/File/New _Window"
+msgstr "/文件(F)/新建窗口(_W)"
+
+#: src/imperaterm.c:855
+msgid "/File/_Close Tab"
+msgstr "/文件(F)/关闭标签页(_C)"
+
+#: src/imperaterm.c:856
+msgid "/File/Close W_indow"
+msgstr "/文件(F)/关闭窗口(_I)"
+
+#: src/imperaterm.c:857
+msgid "/_Edit"
+msgstr "/编辑(_E)"
+
+#: src/imperaterm.c:858
+msgid "/Edit/_Copy"
+msgstr "/编辑(E)/复制(_C)"
+
+#: src/imperaterm.c:859
+msgid "/Edit/_Paste"
+msgstr "/编辑(E)/粘贴(_P)"
+
+#: src/imperaterm.c:861
+msgid "/Edit/_Reset"
+msgstr "/编辑(E)/重置(_R)"
+
+#: src/imperaterm.c:863
+msgid "/Edit/Pr_eferences..."
+msgstr "/编辑(E)/首选项(_E)..."
+
+#: src/imperaterm.c:864
+msgid "/_View"
+msgstr "/查看(_V)"
+
+#: src/imperaterm.c:865
+msgid "/View/_Menubar"
+msgstr "/查看(V)/菜单栏(_M)"
+
+#: src/imperaterm.c:866
+msgid "/View/_Scrollbar"
+msgstr "/查看(V)/滚动条(_S)"
+
+#: src/imperaterm.c:868
+msgid "/View/Zoom _In"
+msgstr "/查看(V)/放大(_I)"
+
+#: src/imperaterm.c:869
+msgid "/View/Zoom _Out"
+msgstr "/查看(V)/缩小(_O)"
+
+#: src/imperaterm.c:870
+msgid "/View/_Normal Size"
+msgstr "/查看(V)/正常大小(_N)"
+
+#: src/imperaterm.c:871
+msgid "/_Tabs"
+msgstr "/标签页(_T)"
+
+#: src/imperaterm.c:872
+msgid "/Tabs/_Previous Tab"
+msgstr "/标签页(T)/上一个标签页(_P)"
+
+#: src/imperaterm.c:873
+msgid "/Tabs/_Next Tab"
+msgstr "/标签页(T)/下一个标签页(_N)"
+
+#: src/imperaterm.c:875
+msgid "/Tabs/Move Tab _Left"
+msgstr "/标签页(T)/向左移动标签页(_L)"
+
+#: src/imperaterm.c:876
+msgid "/Tabs/Move Tab _Right"
+msgstr "/标签页(T)/向右移动标签页(_R)"
+
+#: src/imperaterm.c:878
+msgid "/Tabs/Rename _Tab..."
+msgstr "/标签页(T)/重命名标签页(_T)..."
+
+#: src/imperaterm.c:879
+msgid "/_Help"
+msgstr "/帮助(_H)"
+
+#: src/imperaterm.c:880
+msgid "/Help/_About"
+msgstr "/帮助(H)/关于终端(_A)"
+
+#: src/imperaterm.c:884
+msgid "/Copy"
+msgstr "/复制"
+
+#: src/imperaterm.c:885
+msgid "/Paste"
+msgstr "/粘贴"
+
+#: src/imperaterm.c:887
+msgid "/New Tab"
+msgstr "/新建标签页"
+
+#: src/imperaterm.c:888
+msgid "/New Window"
+msgstr "/新建窗口"
+
+#: src/imperaterm.c:889 src/imperaterm.c:901
+msgid "/Close Tab"
+msgstr "/关闭标签页"
+
+#: src/imperaterm.c:890 src/imperaterm.c:899
+msgid "/Rename Tab..."
+msgstr "/重命名标签页..."
+
+#: src/imperaterm.c:892
+msgid "/Menubar"
+msgstr "/菜单栏"
+
+#: src/imperaterm.c:893
+msgid "/Scrollbar"
+msgstr "/滚动条"
+
+#: src/imperaterm.c:894
+msgid "/Preferences..."
+msgstr "/首选项..."
+
+#: src/imperaterm.c:1210
+msgid "Colour"
+msgstr "颜色"
+
+#: src/imperaterm.c:1267
+msgid "Black"
+msgstr "黑色"
+
+#: src/imperaterm.c:1267
+msgid "Red"
+msgstr "红色"
+
+#: src/imperaterm.c:1267
+msgid "Green"
+msgstr "绿色"
+
+#: src/imperaterm.c:1267
+msgid "Yellow"
+msgstr "黄色"
+
+#: src/imperaterm.c:1267
+msgid "Blue"
+msgstr "蓝色"
+
+#: src/imperaterm.c:1267
+msgid "Magenta"
+msgstr "洋红"
+
+#: src/imperaterm.c:1268
+msgid "Cyan"
+msgstr "青色"
+
+#: src/imperaterm.c:1268
+msgid "White"
+msgstr "白色"
+
+#: src/imperaterm.c:1268
+msgid "Text"
+msgstr "文本"
+
+#: src/imperaterm.c:1268
+msgid "Background"
+msgstr "背景"
+
+#: src/imperaterm.c:1268
+msgid "Cursor"
+msgstr "光标"
+
+#: src/imperaterm.c:1278
+msgid "Custom Colours"
+msgstr "自定义颜色"
+
+#: src/imperaterm.c:1287
+msgid "Normal"
+msgstr "普通"
+
+#: src/imperaterm.c:1288
+msgid "Bright"
+msgstr "明亮"
+
+#: src/imperaterm.c:1297
+msgid "Copy from..."
+msgstr "复制自..."
+
+#: src/imperaterm.c:1303 src/imperaterm.c:1395 src/imperaterm.c:1417
+msgid "Close"
+msgstr "关闭"
+
+#: src/imperaterm.c:1340
+msgid "Block"
+msgstr "方块"
+
+#: src/imperaterm.c:1340
+msgid "Underline"
+msgstr "下划线"
+
+#: src/imperaterm.c:1340
+msgid "Bar"
+msgstr "竖线"
+
+#: src/imperaterm.c:1351
+msgid "Terminal Preferences"
+msgstr "终端首选项"
+
+#: src/imperaterm.c:1372
+msgid "Font:"
+msgstr "字体："
+
+#: src/imperaterm.c:1373
+msgid "Size:"
+msgstr "大小："
+
+#: src/imperaterm.c:1379
+msgid "Custom..."
+msgstr "自定义..."
+
+#: src/imperaterm.c:1382
+msgid "Colours:"
+msgstr "颜色："
+
+#: src/imperaterm.c:1383
+msgid "Cursor:"
+msgstr "光标："
+
+#: src/imperaterm.c:1384
+msgid "Blinking cursor"
+msgstr "光标闪烁"
+
+#: src/imperaterm.c:1385
+msgid "Scrollback lines:"
+msgstr "回滚行数："
+
+#: src/imperaterm.c:1386
+msgid "Audible bell"
+msgstr "响铃"
+
+#: src/imperaterm.c:1387
+msgid "Tabs at the bottom"
+msgstr "标签页在底部"
+
+#: src/imperaterm.c:1388
+msgid "Menubar"
+msgstr "菜单栏"
+
+#: src/imperaterm.c:1391
+msgid "Scrollbar"
+msgstr "滚动条"
+
+#: src/imperaterm.c:1406
+msgid "A terminal emulator for CGTK, drawn with OpenGL."
+msgstr "CGTK 的终端模拟器，使用 OpenGL 绘制。"
+
+#: src/imperaterm.c:1407
+msgid "GL Version String:"
+msgstr "GL 版本字符串："
+
+#: src/imperaterm.c:1408
+msgid "The terminal's logic derives from st, (C) the st engineers."
+msgstr "终端的逻辑源自 st，(C) st 的工程师。"
+
+#: src/imperaterm.c:1410
+msgid "About Imperaterm"
+msgstr "关于 Imperaterm"
+
+#: src/imperaterm.c:1454
+msgid ""
+"Usage: imperaterm [--separate] [-e command [arguments]]\n"
+"  -e command   run the command, not the shell, in the first tab\n"
+"  --separate   be an Imperaterm of its own, not a window of the one that "
+"runs\n"
+"  --version    print the version"
+msgstr ""
+"用法: imperaterm [--separate] [-e 命令 [参数]]\n"
+"  -e 命令      在第一个标签页中运行该命令而不是 shell\n"
+"  --separate   作为独立的 Imperaterm 运行，而不是已运行的 Imperaterm 的窗口\n"
+"  --version    显示版本"
+
+#: src/imperaterm.c:1478
+#, c-format
+msgid "imperaterm: %s is not an option; see imperaterm --help\n"
+msgstr "imperaterm: %s 不是选项；请参阅 imperaterm --help\n"
+
+#: src/imperaterm.c:1482
+msgid "imperaterm: OpenGL is not available on this display\n"
+msgstr "imperaterm: 此显示器上 OpenGL 不可用\n"
+
+#: src/term.c:798 src/term.c:985
+msgid ""
+"imperaterm: OpenGL 3.1 or OpenGL ES 3.0 is needed, and neither is here\n"
+msgstr "imperaterm: 需要 OpenGL 3.1 或 OpenGL ES 3.0，但两者都没有\n"
+
+#: src/term.c:1049
+#, c-format
+msgid "imperaterm: no pty: %s\n"
+msgstr "imperaterm: 没有 pty: %s\n"

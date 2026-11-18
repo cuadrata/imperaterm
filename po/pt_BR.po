@@ -1,0 +1,368 @@
+# Brazilian Portuguese translation of Imperaterm.
+# Copyright (C) 2026 The CGTK authors
+# This file is distributed under the same license as the imperaterm package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: imperaterm 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-18 05:01+0000\n"
+"PO-Revision-Date: 2026-11-14 12:00+0000\n"
+"Last-Translator: The CGTK authors\n"
+"Language-Team: Brazilian Portuguese\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/imperaterm.c:52
+msgid "Default (Dark)"
+msgstr "Padrão (escuro)"
+
+#: src/imperaterm.c:55
+msgid "Default (Light)"
+msgstr "Padrão (claro)"
+
+#: src/imperaterm.c:81
+msgid "Custom"
+msgstr "Personalizado"
+
+#: src/imperaterm.c:216
+msgid "imperaterm: no font\n"
+msgstr "imperaterm: nenhuma fonte\n"
+
+#: src/imperaterm.c:308 src/imperaterm.c:970
+msgid "Terminal"
+msgstr "Terminal"
+
+#: src/imperaterm.c:511
+msgid "Rename Tab"
+msgstr "Renomear aba"
+
+#: src/imperaterm.c:526
+msgid "Name:"
+msgstr "Nome:"
+
+#: src/imperaterm.c:528
+msgid "With no name, the tab names itself."
+msgstr "Sem nome, a aba nomeia a si mesma."
+
+#: src/imperaterm.c:532
+msgid "OK"
+msgstr "OK"
+
+#: src/imperaterm.c:535
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/imperaterm.c:851
+msgid "/_File"
+msgstr "/_Arquivo"
+
+#: src/imperaterm.c:852
+msgid "/File/New _Tab"
+msgstr "/Arquivo/Nova _aba"
+
+#: src/imperaterm.c:853
+msgid "/File/New _Window"
+msgstr "/Arquivo/Nova _janela"
+
+#: src/imperaterm.c:855
+msgid "/File/_Close Tab"
+msgstr "/Arquivo/_Fechar aba"
+
+#: src/imperaterm.c:856
+msgid "/File/Close W_indow"
+msgstr "/Arquivo/Fe_char janela"
+
+#: src/imperaterm.c:857
+msgid "/_Edit"
+msgstr "/_Editar"
+
+#: src/imperaterm.c:858
+msgid "/Edit/_Copy"
+msgstr "/Editar/_Copiar"
+
+#: src/imperaterm.c:859
+msgid "/Edit/_Paste"
+msgstr "/Editar/C_olar"
+
+#: src/imperaterm.c:861
+msgid "/Edit/_Reset"
+msgstr "/Editar/_Redefinir"
+
+#: src/imperaterm.c:863
+msgid "/Edit/Pr_eferences..."
+msgstr "/Editar/_Preferências..."
+
+#: src/imperaterm.c:864
+msgid "/_View"
+msgstr "/E_xibir"
+
+#: src/imperaterm.c:865
+msgid "/View/_Menubar"
+msgstr "/Exibir/Barra de _menus"
+
+#: src/imperaterm.c:866
+msgid "/View/_Scrollbar"
+msgstr "/Exibir/Barra de _rolagem"
+
+#: src/imperaterm.c:868
+msgid "/View/Zoom _In"
+msgstr "/Exibir/_Ampliar"
+
+#: src/imperaterm.c:869
+msgid "/View/Zoom _Out"
+msgstr "/Exibir/Re_duzir"
+
+#: src/imperaterm.c:870
+msgid "/View/_Normal Size"
+msgstr "/Exibir/Tamanho _normal"
+
+#: src/imperaterm.c:871
+msgid "/_Tabs"
+msgstr "/A_bas"
+
+#: src/imperaterm.c:872
+msgid "/Tabs/_Previous Tab"
+msgstr "/Abas/Aba _anterior"
+
+#: src/imperaterm.c:873
+msgid "/Tabs/_Next Tab"
+msgstr "/Abas/_Próxima aba"
+
+#: src/imperaterm.c:875
+msgid "/Tabs/Move Tab _Left"
+msgstr "/Abas/Mover aba para a _esquerda"
+
+#: src/imperaterm.c:876
+msgid "/Tabs/Move Tab _Right"
+msgstr "/Abas/Mover aba para a _direita"
+
+#: src/imperaterm.c:878
+msgid "/Tabs/Rename _Tab..."
+msgstr "/Abas/_Renomear aba..."
+
+#: src/imperaterm.c:879
+msgid "/_Help"
+msgstr "/Aj_uda"
+
+#: src/imperaterm.c:880
+msgid "/Help/_About"
+msgstr "/Ajuda/_Sobre"
+
+#: src/imperaterm.c:884
+msgid "/Copy"
+msgstr "/Copiar"
+
+#: src/imperaterm.c:885
+msgid "/Paste"
+msgstr "/Colar"
+
+#: src/imperaterm.c:887
+msgid "/New Tab"
+msgstr "/Nova aba"
+
+#: src/imperaterm.c:888
+msgid "/New Window"
+msgstr "/Nova janela"
+
+#: src/imperaterm.c:889 src/imperaterm.c:901
+msgid "/Close Tab"
+msgstr "/Fechar aba"
+
+#: src/imperaterm.c:890 src/imperaterm.c:899
+msgid "/Rename Tab..."
+msgstr "/Renomear aba..."
+
+#: src/imperaterm.c:892
+msgid "/Menubar"
+msgstr "/Barra de menus"
+
+#: src/imperaterm.c:893
+msgid "/Scrollbar"
+msgstr "/Barra de rolagem"
+
+#: src/imperaterm.c:894
+msgid "/Preferences..."
+msgstr "/Preferências..."
+
+#: src/imperaterm.c:1210
+msgid "Colour"
+msgstr "Cor"
+
+#: src/imperaterm.c:1267
+msgid "Black"
+msgstr "Preto"
+
+#: src/imperaterm.c:1267
+msgid "Red"
+msgstr "Vermelho"
+
+#: src/imperaterm.c:1267
+msgid "Green"
+msgstr "Verde"
+
+#: src/imperaterm.c:1267
+msgid "Yellow"
+msgstr "Amarelo"
+
+#: src/imperaterm.c:1267
+msgid "Blue"
+msgstr "Azul"
+
+#: src/imperaterm.c:1267
+msgid "Magenta"
+msgstr "Magenta"
+
+#: src/imperaterm.c:1268
+msgid "Cyan"
+msgstr "Ciano"
+
+#: src/imperaterm.c:1268
+msgid "White"
+msgstr "Branco"
+
+#: src/imperaterm.c:1268
+msgid "Text"
+msgstr "Texto"
+
+#: src/imperaterm.c:1268
+msgid "Background"
+msgstr "Fundo"
+
+#: src/imperaterm.c:1268
+msgid "Cursor"
+msgstr "Cursor"
+
+#: src/imperaterm.c:1278
+msgid "Custom Colours"
+msgstr "Cores personalizadas"
+
+#: src/imperaterm.c:1287
+msgid "Normal"
+msgstr "Normal"
+
+#: src/imperaterm.c:1288
+msgid "Bright"
+msgstr "Brilhante"
+
+#: src/imperaterm.c:1297
+msgid "Copy from..."
+msgstr "Copiar de..."
+
+#: src/imperaterm.c:1303 src/imperaterm.c:1395 src/imperaterm.c:1417
+msgid "Close"
+msgstr "Fechar"
+
+#: src/imperaterm.c:1340
+msgid "Block"
+msgstr "Bloco"
+
+#: src/imperaterm.c:1340
+msgid "Underline"
+msgstr "Sublinhado"
+
+#: src/imperaterm.c:1340
+msgid "Bar"
+msgstr "Barra"
+
+#: src/imperaterm.c:1351
+msgid "Terminal Preferences"
+msgstr "Preferências do Terminal"
+
+#: src/imperaterm.c:1372
+msgid "Font:"
+msgstr "Fonte:"
+
+#: src/imperaterm.c:1373
+msgid "Size:"
+msgstr "Tamanho:"
+
+#: src/imperaterm.c:1379
+msgid "Custom..."
+msgstr "Personalizado..."
+
+#: src/imperaterm.c:1382
+msgid "Colours:"
+msgstr "Cores:"
+
+#: src/imperaterm.c:1383
+msgid "Cursor:"
+msgstr "Cursor:"
+
+#: src/imperaterm.c:1384
+msgid "Blinking cursor"
+msgstr "Cursor piscante"
+
+#: src/imperaterm.c:1385
+msgid "Scrollback lines:"
+msgstr "Linhas de histórico:"
+
+#: src/imperaterm.c:1386
+msgid "Audible bell"
+msgstr "Campainha audível"
+
+#: src/imperaterm.c:1387
+msgid "Tabs at the bottom"
+msgstr "Abas na parte inferior"
+
+#: src/imperaterm.c:1388
+msgid "Menubar"
+msgstr "Barra de menus"
+
+#: src/imperaterm.c:1391
+msgid "Scrollbar"
+msgstr "Barra de rolagem"
+
+#: src/imperaterm.c:1406
+msgid "A terminal emulator for CGTK, drawn with OpenGL."
+msgstr "Um emulador de terminal para CGTK, desenhado com OpenGL."
+
+#: src/imperaterm.c:1407
+msgid "GL Version String:"
+msgstr "String de versão do GL:"
+
+#: src/imperaterm.c:1408
+msgid "The terminal's logic derives from st, (C) the st engineers."
+msgstr "A lógica do terminal deriva do st, (C) os engenheiros do st."
+
+#: src/imperaterm.c:1410
+msgid "About Imperaterm"
+msgstr "Sobre o Imperaterm"
+
+#: src/imperaterm.c:1454
+msgid ""
+"Usage: imperaterm [--separate] [-e command [arguments]]\n"
+"  -e command   run the command, not the shell, in the first tab\n"
+"  --separate   be an Imperaterm of its own, not a window of the one that "
+"runs\n"
+"  --version    print the version"
+msgstr ""
+"Uso: imperaterm [--separate] [-e comando [argumentos]]\n"
+"  -e comando   executa o comando, e não o shell, na primeira aba\n"
+"  --separate   é um Imperaterm à parte, e não uma janela do que já está em "
+"execução\n"
+"  --version    mostra a versão"
+
+#: src/imperaterm.c:1478
+#, c-format
+msgid "imperaterm: %s is not an option; see imperaterm --help\n"
+msgstr "imperaterm: %s não é uma opção; veja imperaterm --help\n"
+
+#: src/imperaterm.c:1482
+msgid "imperaterm: OpenGL is not available on this display\n"
+msgstr "imperaterm: OpenGL não está disponível nesta tela\n"
+
+#: src/term.c:798 src/term.c:985
+msgid ""
+"imperaterm: OpenGL 3.1 or OpenGL ES 3.0 is needed, and neither is here\n"
+msgstr ""
+"imperaterm: é necessário OpenGL 3.1 ou OpenGL ES 3.0, e nenhum dos dois está "
+"presente\n"
+
+#: src/term.c:1049
+#, c-format
+msgid "imperaterm: no pty: %s\n"
+msgstr "imperaterm: sem pty: %s\n"

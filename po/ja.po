@@ -1,0 +1,370 @@
+# Japanese translation of Imperaterm.
+# Copyright (C) 2026 The CGTK authors
+# This file is distributed under the same license as the imperaterm package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: imperaterm 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-18 05:01+0000\n"
+"PO-Revision-Date: 2026-11-14 12:00+0000\n"
+"Last-Translator: The CGTK authors\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/imperaterm.c:52
+msgid "Default (Dark)"
+msgstr "デフォルト (ダーク)"
+
+#: src/imperaterm.c:55
+msgid "Default (Light)"
+msgstr "デフォルト (ライト)"
+
+#: src/imperaterm.c:81
+msgid "Custom"
+msgstr "カスタム"
+
+#: src/imperaterm.c:216
+msgid "imperaterm: no font\n"
+msgstr "imperaterm: フォントがありません\n"
+
+#: src/imperaterm.c:308 src/imperaterm.c:970
+msgid "Terminal"
+msgstr "ターミナル"
+
+#: src/imperaterm.c:511
+msgid "Rename Tab"
+msgstr "タブの名前を変更"
+
+#: src/imperaterm.c:526
+msgid "Name:"
+msgstr "名前:"
+
+#: src/imperaterm.c:528
+msgid "With no name, the tab names itself."
+msgstr "名前がなければ、タブは自動で名付けられます。"
+
+#: src/imperaterm.c:532
+msgid "OK"
+msgstr "OK"
+
+#: src/imperaterm.c:535
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: src/imperaterm.c:851
+msgid "/_File"
+msgstr "/ファイル(_F)"
+
+#: src/imperaterm.c:852
+msgid "/File/New _Tab"
+msgstr "/ファイル(F)/新しいタブ(_T)"
+
+#: src/imperaterm.c:853
+msgid "/File/New _Window"
+msgstr "/ファイル(F)/新しいウィンドウ(_W)"
+
+#: src/imperaterm.c:855
+msgid "/File/_Close Tab"
+msgstr "/ファイル(F)/タブを閉じる(_C)"
+
+#: src/imperaterm.c:856
+msgid "/File/Close W_indow"
+msgstr "/ファイル(F)/ウィンドウを閉じる(_I)"
+
+#: src/imperaterm.c:857
+msgid "/_Edit"
+msgstr "/編集(_E)"
+
+#: src/imperaterm.c:858
+msgid "/Edit/_Copy"
+msgstr "/編集(E)/コピー(_C)"
+
+#: src/imperaterm.c:859
+msgid "/Edit/_Paste"
+msgstr "/編集(E)/貼り付け(_P)"
+
+#: src/imperaterm.c:861
+msgid "/Edit/_Reset"
+msgstr "/編集(E)/リセット(_R)"
+
+#: src/imperaterm.c:863
+msgid "/Edit/Pr_eferences..."
+msgstr "/編集(E)/設定(_E)..."
+
+#: src/imperaterm.c:864
+msgid "/_View"
+msgstr "/表示(_V)"
+
+#: src/imperaterm.c:865
+msgid "/View/_Menubar"
+msgstr "/表示(V)/メニューバー(_M)"
+
+#: src/imperaterm.c:866
+msgid "/View/_Scrollbar"
+msgstr "/表示(V)/スクロールバー(_S)"
+
+#: src/imperaterm.c:868
+msgid "/View/Zoom _In"
+msgstr "/表示(V)/拡大(_I)"
+
+#: src/imperaterm.c:869
+msgid "/View/Zoom _Out"
+msgstr "/表示(V)/縮小(_O)"
+
+#: src/imperaterm.c:870
+msgid "/View/_Normal Size"
+msgstr "/表示(V)/通常サイズ(_N)"
+
+#: src/imperaterm.c:871
+msgid "/_Tabs"
+msgstr "/タブ(_T)"
+
+#: src/imperaterm.c:872
+msgid "/Tabs/_Previous Tab"
+msgstr "/タブ(T)/前のタブ(_P)"
+
+#: src/imperaterm.c:873
+msgid "/Tabs/_Next Tab"
+msgstr "/タブ(T)/次のタブ(_N)"
+
+#: src/imperaterm.c:875
+msgid "/Tabs/Move Tab _Left"
+msgstr "/タブ(T)/タブを左へ移動(_L)"
+
+#: src/imperaterm.c:876
+msgid "/Tabs/Move Tab _Right"
+msgstr "/タブ(T)/タブを右へ移動(_R)"
+
+#: src/imperaterm.c:878
+msgid "/Tabs/Rename _Tab..."
+msgstr "/タブ(T)/タブの名前を変更(_T)..."
+
+#: src/imperaterm.c:879
+msgid "/_Help"
+msgstr "/ヘルプ(_H)"
+
+#: src/imperaterm.c:880
+msgid "/Help/_About"
+msgstr "/ヘルプ(H)/ターミナルについて(_A)"
+
+#: src/imperaterm.c:884
+msgid "/Copy"
+msgstr "/コピー"
+
+#: src/imperaterm.c:885
+msgid "/Paste"
+msgstr "/貼り付け"
+
+#: src/imperaterm.c:887
+msgid "/New Tab"
+msgstr "/新しいタブ"
+
+#: src/imperaterm.c:888
+msgid "/New Window"
+msgstr "/新しいウィンドウ"
+
+#: src/imperaterm.c:889 src/imperaterm.c:901
+msgid "/Close Tab"
+msgstr "/タブを閉じる"
+
+#: src/imperaterm.c:890 src/imperaterm.c:899
+msgid "/Rename Tab..."
+msgstr "/タブの名前を変更..."
+
+#: src/imperaterm.c:892
+msgid "/Menubar"
+msgstr "/メニューバー"
+
+#: src/imperaterm.c:893
+msgid "/Scrollbar"
+msgstr "/スクロールバー"
+
+#: src/imperaterm.c:894
+msgid "/Preferences..."
+msgstr "/設定..."
+
+#: src/imperaterm.c:1210
+msgid "Colour"
+msgstr "色"
+
+#: src/imperaterm.c:1267
+msgid "Black"
+msgstr "黒"
+
+#: src/imperaterm.c:1267
+msgid "Red"
+msgstr "赤"
+
+#: src/imperaterm.c:1267
+msgid "Green"
+msgstr "緑"
+
+#: src/imperaterm.c:1267
+msgid "Yellow"
+msgstr "黄"
+
+#: src/imperaterm.c:1267
+msgid "Blue"
+msgstr "青"
+
+#: src/imperaterm.c:1267
+msgid "Magenta"
+msgstr "マゼンタ"
+
+#: src/imperaterm.c:1268
+msgid "Cyan"
+msgstr "シアン"
+
+#: src/imperaterm.c:1268
+msgid "White"
+msgstr "白"
+
+#: src/imperaterm.c:1268
+msgid "Text"
+msgstr "テキスト"
+
+#: src/imperaterm.c:1268
+msgid "Background"
+msgstr "背景"
+
+#: src/imperaterm.c:1268
+msgid "Cursor"
+msgstr "カーソル"
+
+#: src/imperaterm.c:1278
+msgid "Custom Colours"
+msgstr "カスタムの色"
+
+#: src/imperaterm.c:1287
+msgid "Normal"
+msgstr "標準"
+
+#: src/imperaterm.c:1288
+msgid "Bright"
+msgstr "明るい"
+
+#: src/imperaterm.c:1297
+msgid "Copy from..."
+msgstr "コピー元..."
+
+#: src/imperaterm.c:1303 src/imperaterm.c:1395 src/imperaterm.c:1417
+msgid "Close"
+msgstr "閉じる"
+
+#: src/imperaterm.c:1340
+msgid "Block"
+msgstr "ブロック"
+
+#: src/imperaterm.c:1340
+msgid "Underline"
+msgstr "下線"
+
+#: src/imperaterm.c:1340
+msgid "Bar"
+msgstr "縦線"
+
+#: src/imperaterm.c:1351
+msgid "Terminal Preferences"
+msgstr "ターミナルの設定"
+
+#: src/imperaterm.c:1372
+msgid "Font:"
+msgstr "フォント:"
+
+#: src/imperaterm.c:1373
+msgid "Size:"
+msgstr "サイズ:"
+
+#: src/imperaterm.c:1379
+msgid "Custom..."
+msgstr "カスタム..."
+
+#: src/imperaterm.c:1382
+msgid "Colours:"
+msgstr "色:"
+
+#: src/imperaterm.c:1383
+msgid "Cursor:"
+msgstr "カーソル:"
+
+#: src/imperaterm.c:1384
+msgid "Blinking cursor"
+msgstr "カーソルを点滅"
+
+#: src/imperaterm.c:1385
+msgid "Scrollback lines:"
+msgstr "スクロールバックの行数:"
+
+#: src/imperaterm.c:1386
+msgid "Audible bell"
+msgstr "ベルを鳴らす"
+
+#: src/imperaterm.c:1387
+msgid "Tabs at the bottom"
+msgstr "タブを下に表示"
+
+#: src/imperaterm.c:1388
+msgid "Menubar"
+msgstr "メニューバー"
+
+#: src/imperaterm.c:1391
+msgid "Scrollbar"
+msgstr "スクロールバー"
+
+#: src/imperaterm.c:1406
+msgid "A terminal emulator for CGTK, drawn with OpenGL."
+msgstr "CGTK 用のターミナルエミュレータ。OpenGL で描画します。"
+
+#: src/imperaterm.c:1407
+msgid "GL Version String:"
+msgstr "GL バージョン文字列:"
+
+#: src/imperaterm.c:1408
+msgid "The terminal's logic derives from st, (C) the st engineers."
+msgstr "ターミナルのロジックは st に由来します。(C) st の開発者"
+
+#: src/imperaterm.c:1410
+msgid "About Imperaterm"
+msgstr "Imperatermについて"
+
+#: src/imperaterm.c:1454
+msgid ""
+"Usage: imperaterm [--separate] [-e command [arguments]]\n"
+"  -e command   run the command, not the shell, in the first tab\n"
+"  --separate   be an Imperaterm of its own, not a window of the one that "
+"runs\n"
+"  --version    print the version"
+msgstr ""
+"使い方: imperaterm [--separate] [-e コマンド [引数]]\n"
+"  -e コマンド  最初のタブでシェルの代わりにコマンドを実行\n"
+"  --separate   実行中の Imperaterm のウィンドウにせず、独立した Imperaterm と"
+"して起動\n"
+"  --version    バージョンを表示"
+
+#: src/imperaterm.c:1478
+#, c-format
+msgid "imperaterm: %s is not an option; see imperaterm --help\n"
+msgstr ""
+"imperaterm: %s はオプションではありません。imperaterm --help を参照してくださ"
+"い\n"
+
+#: src/imperaterm.c:1482
+msgid "imperaterm: OpenGL is not available on this display\n"
+msgstr "imperaterm: このディスプレイでは OpenGL を利用できません\n"
+
+#: src/term.c:798 src/term.c:985
+msgid ""
+"imperaterm: OpenGL 3.1 or OpenGL ES 3.0 is needed, and neither is here\n"
+msgstr ""
+"imperaterm: OpenGL 3.1 または OpenGL ES 3.0 が必要ですが、どちらもありませ"
+"ん\n"
+
+#: src/term.c:1049
+#, c-format
+msgid "imperaterm: no pty: %s\n"
+msgstr "imperaterm: pty がありません: %s\n"

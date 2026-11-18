@@ -1,0 +1,60 @@
+Imperaterm 1.0.0
+================
+
+The first release. Imperaterm is a lightning fast terminal emulator for
+CGTK. Its terminal's logic derives from st.
+
+The terminal
+* An xterm to the programs that run in it: TERM is xterm-256color, with
+  24 bit colour, the alternate screen, bracketed paste, mouse and focus
+  reporting and synchronized output.
+* Drawn with OpenGL 3.1, or OpenGL ES 3.0 where there is no such thing
+  or IMPERATERM_GLES is set. No GL library is linked, and Help > About
+  says which is in use.
+* Nothing is drawn when nothing has changed, and what a program writes
+  is drawn when it pauses, so that a screen changed in many small
+  writes is seen whole. Line drawing and block characters are drawn by
+  Imperaterm, so that they join.
+* Selections by word, line and block, as the primary selection; the
+  clipboard by Ctrl+Shift+C and Ctrl+Shift+V; a scrollback, which the
+  wheel scrolls; and larger and smaller text by Ctrl++ and Ctrl+-.
+
+Tabs and windows
+* A tab says who is at the terminal and where, user@host: directory,
+  as the shell tells it at each prompt by OSC 7 and OSC 1337.
+  imperaterm.sh has sh, ash, dash, ksh, bash and zsh tell it, for the
+  shell Imperaterm starts and, from profile.d, for login shells; fish
+  needs four lines, given in the README. A new tab starts in the
+  directory of the one shown.
+* Tabs can be renamed, moved along the bar, carried to another window,
+  or dropped where there is none to have a window of their own. They
+  are at the top of the window or, if chosen, at the bottom.
+* All the windows on a display are one Imperaterm, so that a tab can go
+  from any to any other and a change in the settings is every window's
+  at once. imperaterm --separate is one of its own.
+* imperaterm -e runs a command in place of the shell.
+
+Settings
+* Edit > Preferences has the font, its size, the colours, the cursor,
+  the scrollback, the bell, where the tabs are, the menubar and the
+  scrollbar, each in effect as it is made, kept in
+  $XDG_CONFIG_HOME/imperaterm/imperatermrc.
+* Two sets of colours of Imperaterm's own, Default (Dark) and Default
+  (Light), whose colours are each read on their ground; well known
+  sets by their own names; and Custom, with an editor of its own.
+
+Translations
+* Chinese (simplified), French, German, Japanese, Portuguese (Brazil),
+  Russian and Spanish, in the program and the desktop file. They were
+  machine translated and have not been reviewed by native speakers.
+
+Building
+* make check runs the terminal without a window and compares the cells
+  and replies with what they should be; tests/bench measures how fast
+  it takes text. ./configure --disable-nls builds it in English only.
+
+Not there yet
+* Combining characters, colour emoji and ligatures; the kitty keyboard
+  and graphics protocols; an input method's preedit text in the
+  terminal. The directory of a new tab, and the one a tab shows, are
+  found in /proc, so on Linux only.

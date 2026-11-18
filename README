@@ -1,0 +1,295 @@
+Imperaterm
+==========
+
+Copyright (C) 2026 The CGTK authors
+
+Imperaterm is a lightning fast terminal emulator for CGTK. It is minimal, but
+does have some QoL features: tabs, a scrollback, selections and a few settings.
+What it shows is drawn with OpenGL.
+
+It is an xterm to the programs that run in it: TERM is xterm-256color,
+and 24 bit colour, the alternate screen, bracketed paste, mouse
+reporting, focus reporting and synchronized output are there. The
+terminal's logic derives from st.
+
+
+What it needs
+-------------
+
+  CGTK 1.4, built with its OpenGL widget (gtkgl)
+  FreeType and fontconfig, which CGTK needs as well
+  OpenGL 3.1 or OpenGL ES 3.0 when it runs
+  gettext, for its translations: autoreconf wants autopoint, and make
+    wants msgfmt
+
+No GL library is linked. Imperaterm asks for an OpenGL 3.1 context, and
+for an OpenGL ES 3.0 one where there is no such thing. To have OpenGL ES
+where both are there, as on a board whose driver does it better, set
+IMPERATERM_GLES in the environment. Help > About says which one is in
+use.
+
+
+Building
+--------
+
+  autoreconf -vif
+  ./configure
+  make
+  make check
+  make install
+
+make check runs the terminal without a window: sequences go in, and the
+cells and replies that come out are compared with what they should be.
+tests/bench, built with it, measures how fast the terminal takes text.
+
+make install puts the icon where a desktop looks for one: the drawing in
+the hicolor theme's scalable directory, PNGs of it from 16 to 256 pixels
+beside that, and an XPM in pixmaps. The PNGs and the XPM are in icons/
+already, made from the one SVG there by icons/render.sh, which needs
+rsvg-convert and ImageMagick and is not part of the build.
+
+./configure --disable-nls builds it in English only.
+
+
+Keys
+----
+
+  Ctrl+Shift+T          new tab, in the directory of the current one
+  Ctrl+Shift+N          new window
+  Ctrl+Shift+W          close the tab
+  Ctrl+Shift+Q          close the window
+  Ctrl+Page Up, Down    previous and next tab
+  Ctrl+Shift+Page Up,   move the tab left and right
+    Down
+  Ctrl+Shift+C          copy the selection to the clipboard
+  Ctrl+Shift+V          paste the clipboard
+  Shift+Insert          paste the primary selection
+  Shift+Page Up, Down   scroll back and forth by a page
+  Shift+Home, End       to the top of the scrollback and to its end
+  Ctrl++, Ctrl+-,       larger and smaller text, and the size as set
+    Ctrl+0
+
+Alt and a key send Escape and the key.
+
+
+Tabs
+----
+
+A tab says who is at the terminal and where, as a prompt does:
+
+  user@host: directory
+
+with ~ for home. Of a long directory the tab shows the end, after three
+dots; the window's title has all of it. A program that sets a title, as
+some shells do at each prompt, has the tab called that. How the tab
+knows who and where is under Who and where, below.
+
+The right button on a tab has a menu, and Rename Tab in it gives the tab
+a custom name. The name lasts until the tab is closed and is saved nowhere.
+An empty name gives the tab back its own.
+
+A tab dragged along the bar with the left button changes places with
+those it passes. The Tabs menu and its keys move it too.
+
+Dragged off the bar, the tab is carried. Dropped on another window it
+goes to that window, at the place in its bar where it is dropped or at
+the end if it is dropped on the terminal. Dropped where there is no
+window of Imperaterm it has a new window of its own. Dropped back on the
+window it came from it stays where it was, and with X so it does when
+Escape is pressed on the way. A tab goes between the windows of one
+Imperaterm, and the windows on a display are all of one: see One
+Imperaterm below.
+
+The tabs are at the top of the window, under the menubar. Tabs at the
+bottom in Edit > Preferences puts them under the terminal, in every
+window.
+
+
+The mouse
+---------
+
+Dragging with the left button selects, a double click a word and a
+triple click a line. Shift and a click move the end of the selection.
+With Control held the selection is a block. What is selected is the
+primary selection, which the middle button pastes. The right button has
+a menu.
+
+The wheel scrolls the scrollback. In a program that uses the alternate
+screen, such as less, it sends the arrow keys.
+
+A program that asks for the mouse gets it. Hold Shift to select all the
+same.
+
+
+Settings
+--------
+
+Edit > Preferences has the font, its size, the colours, the cursor, the
+scrollback, the bell, where the tabs are, the menubar and the scrollbar.
+A change there is in effect as it is made, and there is nothing to
+confirm. A font typed in is taken once it is the name of one there is,
+or at Enter. The settings are kept in
+
+  $XDG_CONFIG_HOME/imperaterm/imperatermrc
+
+which is ~/.config/imperaterm/imperatermrc unless that is set. The
+number of scrollback lines is for the tabs opened after it is changed.
+The size of a new window is there too, as columns and rows, though not
+in the dialog.
+
+View > Menubar and View > Scrollbar show and hide those, in every
+window, and are kept too. Both are in the menu of the right button as
+well, which is a way back to a hidden menubar, and Preferences has
+both.
+
+The first two sets of colours, Default (Dark) and Default (Light), are
+unique to Imperaterm, with Default (Dark) as the default. The other sets
+are well known by the names they have here.
+
+The last set, Custom, is the user's own, and starts as a copy of the
+first. The Custom... button beside the list chooses it and opens its
+editor. Each colour there has a swatch, which opens a colour selector,
+and its value as rrggbb, which can be typed. Copy from makes Custom a
+copy of another set to start from. In the settings file Custom is
+colour0 to colour15, foreground, background and cursorcolour, each as
+#rrggbb.
+
+
+Running a command
+-----------------
+
+  imperaterm -e command arguments
+
+runs the command in place of the shell. The window closes when it ends.
+
+
+One Imperaterm
+--------------
+
+All the windows on a display are one Imperaterm. An Imperaterm that is
+started while another runs, from a key, a menu or a command line, hands
+that one what it was to run and has a window of it. The command or the
+shell runs in the directory and with the environment of the Imperaterm
+that was started, and that Imperaterm waits until the tab that came of
+it is gone, so that what waits for a terminal to close still does.
+
+This is what lets a tab be carried from any window to any other. A new
+window comes up sooner, and a change in Preferences is every window's
+at once. The price is that the windows stand and fall together.
+
+  imperaterm --separate
+
+is an Imperaterm of its own: it joins none and none joins it. So is one
+that is given an option of GTK's, such as --display.
+
+A display is what is drawn to, the X server or the Wayland compositor,
+with however many monitors it has. The Imperaterms meet at a socket in
+XDG_RUNTIME_DIR, which must be the user's alone, as it is meant to be;
+where it is not set, or is open to others, each Imperaterm is its own.
+One that gets no answer within five seconds runs on its own too.
+
+
+Who and where
+-------------
+
+A terminal cannot find out who is at it or where: it has to be told.
+What a system has for looking at another program is its own and no other
+system's, sees the shell that was started and not the one in use after
+su or ssh, and does not let a user see where root is. So the shell says
+it at each prompt, in two strings that other terminals read as well:
+
+  OSC 7     file://host/directory
+  OSC 1337  RemoteHost=user@host
+
+Until a shell has said anything, a tab has the user Imperaterm runs as,
+this host, and the directory it started in. A shell that says nothing
+leaves the tab as it was. A new tab starts in the directory the tab that
+is shown was last told of on this host, or at home if it cannot go
+there.
+
+imperaterm.sh has a shell say it. It is for sh, ash, dash, ksh, bash and
+zsh, and is installed in the imperaterm directory under share. Who reads
+it:
+
+  The shell imperaterm starts, unasked: bash by PROMPT_COMMAND in the
+  environment and sh, ash, dash and ksh by ENV, where those are not set
+  already. So does a shell that is given that environment, as after su.
+
+  Login shells, if it is in /etc/profile.d: those of sudo -i, su - and
+  ssh. make install puts it in profile.d under sysconfdir, which is /etc
+  only if imperaterm was configured with --sysconfdir=/etc. Otherwise
+  copy it or link it there.
+
+  A shell that is neither, as after sudo -s or doas -s, reads only its
+  own files. For bash, this line in the system's bashrc or the user's
+  .bashrc, and for zsh in .zshrc:
+
+    . /etc/profile.d/imperaterm.sh
+
+  An ash started so reads no file at all, and says nothing.
+
+  bash whose .bashrc sets PROMPT_COMMAND anew needs the same line after
+  that.
+
+  fish, in config.fish:
+
+    function __imperaterm_report --on-event fish_prompt
+        printf '\e]7;file://%s%s\a\e]1337;RemoteHost=%s@%s\a' $hostname \
+            (string escape --style=url -- $PWD) $USER $hostname
+    end
+
+On another host the same file has the tab say who and where there, when
+it is reached with ssh. It keeps quiet unless the shell is one a person
+types at and TERM begins with xterm.
+
+
+How it draws
+------------
+
+A terminal is a small texture with two texels for each cell: its
+colours, where its glyph is in the atlas, and whether it is underlined
+or struck through. One triangle covers the window. For each pixel the
+fragment shader finds the cell, then the glyph's pixel. Nothing is drawn
+twice, nothing is blended and no integer is divided, which suits a
+modest GPU.
+
+Nothing is drawn when nothing has changed. What a program writes is
+drawn when it pauses, three milliseconds after it last wrote, so that a
+change it makes to the screen in many small writes is seen whole and not
+half made. When a program writes without pause, it is read as fast as it
+writes and the window is drawn once for each frame of the screen.
+
+Line drawing and block characters are drawn by Imperaterm, not taken
+from the font, so that they join. Double lines, dashes and arcs are the
+font's.
+
+
+What is not there
+-----------------
+
+  Combining characters: a character of no width is dropped.
+  Colour emoji, and ligatures.
+  The kitty keyboard and graphics protocols.
+  Preedit text of an input method is not shown in the terminal; what
+  the input method commits is typed.
+
+
+Translations
+------------
+
+Imperaterm's text domain is imperaterm, with its catalogues in po:
+Chinese (simplified), French, German, Japanese, Portuguese (Brazil),
+Russian and Spanish. The desktop file carries the same languages. The
+names of the sets of colours stay as they are but for Default and
+Custom, and so does what the settings file says. The translations were
+machine translated and have not been reviewed by native speakers.
+
+
+Licence
+-------
+
+MIT/X Consortium. See LICENSE, which names the authors of st too, and
+those of the sets of colours that are not Imperaterm's own: Black Metal,
+Iceberg, Rose Pine, Shades of Purple and the two CRT sets, each of which
+is under the same licence. They are here as the iTerm2-Color-Schemes
+collection has them.

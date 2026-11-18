@@ -1,0 +1,129 @@
+.TH imperaterm 1 "November 2026" "imperaterm 1.0.0"
+.ss 12 0
+.SH NAME
+imperaterm \- a terminal emulator for CGTK
+.SH SYNOPSIS
+.B imperaterm
+.RB [ \-\-separate ]
+.RB [ \-e
+.I command
+.RI [ arguments ]]
+.SH DESCRIPTION
+.B imperaterm
+is a terminal emulator with tabs, a scrollback and selections, drawn with
+OpenGL. To the programs that run in it it is an xterm:
+.B TERM
+is set to xterm\-256color and
+.B COLORTERM
+to truecolor.
+.PP
+All the windows on a display are one
+.BR imperaterm .
+One that is started while another runs hands that one what it was to run,
+with its directory and its environment, has a window of it, and waits
+until the tab that came of it is gone.
+.SH OPTIONS
+.TP
+.BI \-e " command"
+Run the command, with the arguments that follow it, in place of the shell.
+This is the last option: everything after it is the command's.
+.TP
+.B \-\-separate
+Be an
+.B imperaterm
+of its own, which joins none and which none joins. One that is given an
+option of GTK's is on its own too.
+.TP
+.B \-\-version
+Print the version and exit.
+.TP
+.B \-\-help
+Print the options and exit.
+.SH KEYS
+.TP
+.B Ctrl+Shift+T
+New tab, in the directory of the current one.
+.TP
+.B Ctrl+Shift+N
+New window.
+.TP
+.B Ctrl+Shift+W
+Close the tab.
+.TP
+.B Ctrl+Shift+Q
+Close the window.
+.TP
+.B Ctrl+Page Up, Ctrl+Page Down
+The previous and the next tab. With Shift, the tab is moved.
+.TP
+.B Ctrl+Shift+C, Ctrl+Shift+V
+Copy the selection to the clipboard, and paste the clipboard.
+.TP
+.B Shift+Insert
+Paste the primary selection.
+.TP
+.B Shift+Page Up, Shift+Page Down, Shift+Home, Shift+End
+Scroll through the scrollback.
+.TP
+.B Ctrl++, Ctrl+\-, Ctrl+0
+Larger and smaller text, and the size as set.
+.SH TABS
+A tab says who is at the terminal and where, as user@host: directory,
+or what a program sets as the title. The right button on a tab has a menu;
+Rename Tab in it, or a double click on the tab, gives the tab a name of
+your own until it is closed. An empty name gives it back its own.
+A tab dragged along the bar changes places with those it passes.
+Dragged off the bar it is carried: dropped on another window it goes
+there, and dropped on none it has a new window of its own.
+Dropped back on its own window it stays where it was.
+Tabs at the bottom in Edit > Preferences puts the tabs under the terminal.
+.PP
+Who is at the terminal and where is what the shell says at each prompt,
+with OSC 7 (file://host/directory) and OSC 1337 (RemoteHost=user@host).
+.I imperaterm.sh
+has a shell say it. The shell
+.B imperaterm
+starts reads it unasked, by
+.B PROMPT_COMMAND
+or
+.B ENV
+in its environment where those are not set already; login shells, as
+after sudo \-i, su \- or ssh, read it if it is in /etc/profile.d. A shell
+that says nothing leaves the tab as it was. The README has the rest.
+.SH MOUSE
+Dragging with the left button selects; a double click selects a word and
+a triple click a line. With Control held the selection is a block. Shift
+and a click move the end of the selection. The middle button pastes the
+primary selection and the right button opens a menu. The wheel scrolls.
+When a program has asked for the mouse, hold Shift to select.
+.SH ENVIRONMENT
+.TP
+.B IMPERATERM_GLES
+If set, OpenGL ES 3.0 is used even where OpenGL 3.1 is there.
+.TP
+.B SHELL
+The shell to run. Without it, the user's shell from the password file.
+.SH FILES
+.TP
+.I imperaterm.sh
+In the imperaterm directory under share, and in profile.d under the
+configuration directory Imperaterm was built for: what a shell reads to tell
+the terminal who is at it and where.
+.TP
+.I $XDG_CONFIG_HOME/imperaterm/imperatermrc
+The settings, as Edit > Preferences keeps them.
+.I ~/.config
+stands in for
+.B XDG_CONFIG_HOME
+when that is not set.
+.TP
+.I $XDG_RUNTIME_DIR/imperaterm\-*
+The socket at which an
+.B imperaterm
+that is started finds the one that runs, and the lock beside it. There is
+one for each display. The directory must be the user's alone; where it is
+not, or is not set, each
+.B imperaterm
+is its own.
+.SH SEE ALSO
+.BR xterm (1)
