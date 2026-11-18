@@ -46,6 +46,9 @@ static int *glattr;
  */
 enum { LULL = 500, LATEST = 16000, HELD = 150000 };
 
+/* How long a window has to become the size it is asked to be, when its text changes size. */
+enum { REFIT = 300000 };
+
 static void output(Term *t, const char *s, size_t len);
 static void input(gpointer data, gint fd, GdkInputCondition cond);
 
@@ -68,6 +71,13 @@ later(int64_t us, GSourceFunc fn, gpointer data)
 
 /* Drawing. */
 
+/* The window asks to have room for so many columns and rows, as it is when it is new. */
+static void
+usize(Win *w, int cols, int rows)
+{
+    gtk_widget_set_usize(w->gl, (cols * cellw + scale - 1) / scale + 2 * PAD, (rows * cellh + scale - 1) / scale + 2 * PAD);
+}
+
 /* The terminal takes the size its window has. */
 static void
 fit(Tab *tb)
@@ -76,10 +86,48 @@ fit(Tab *tb)
     int pad = PAD * scale, cols = MAX((w->w - 2 * pad) / cellw, 2), rows = MAX((w->h - 2 * pad) / cellh, 1);
     struct winsize ws = { rows, cols, cols * cellw, rows * cellh };
 
+    if (w->refit) {  /* the window is not yet the size asked for: the terminal keeps the size it has */
+        if (cols == tb->vt->cols && rows == tb->vt->rows)
+            w->refit = 0;
+        else if (now() < w->refit)
+            return;
+        else {  /* nor will it be: what it asks for is again what a new window would */
+            w->refit = 0;
+            usize(w, cfg.cols, cfg.rows);
+        }
+    }
     if (w->w && (cols != tb->vt->cols || rows != tb->vt->rows)) {
         vt_resize(tb->vt, cols, rows);
         ioctl(tb->fd, TIOCSWINSZ, &ws);
     }
+}
+
+static void draw(Win *w);
+
+/* The window was not made the size asked for, maximized or tiled: the terminal takes what it has. */
+static gboolean
+refitted(gpointer data)
+{
+    Win *w = data;
+
+    w->refittag = 0;
+    draw(w);
+    return FALSE;
+}
+
+/* The text has changed size, and the window is asked to change with it, to keep the terminal's. */
+void
+term_refit(Win *w)
+{
+    Tab *tb = w->cur;
+
+    if (!tb)
+        return;
+    usize(w, tb->vt->cols, tb->vt->rows);
+    w->refit = now() + REFIT;
+    if (w->refittag)
+        g_source_remove(w->refittag);
+    w->refittag = later(REFIT, refitted, w);
 }
 
 static void
@@ -823,10 +871,12 @@ gone(GtkWidget *wd, Win *w)
         g_source_remove(w->drawtag);
     if (w->blinktag)
         g_source_remove(w->blinktag);
+    if (w->refittag)
+        g_source_remove(w->refittag);
     gtk_im_context_set_client_window(w->im, NULL);
     gtk_object_unref(GTK_OBJECT(w->im));
     free(w->primary), free(w->clip);
-    w->drawtag = w->blinktag = 0, w->primary = w->clip = NULL;
+    w->drawtag = w->blinktag = w->refittag = 0, w->primary = w->clip = NULL;
 }
 
 static gint
@@ -1004,8 +1054,7 @@ term_new(Win *w)
     GTK_WIDGET_SET_FLAGS(w->gl, GTK_CAN_FOCUS);
     gtk_widget_set_events(w->gl, GDK_EXPOSURE_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
                           GDK_BUTTON_MOTION_MASK | GDK_KEY_PRESS_MASK | GDK_FOCUS_CHANGE_MASK);
-    gtk_widget_set_usize(w->gl, (cfg.cols * cellw + scale - 1) / scale + 2 * PAD,
-                         (cfg.rows * cellh + scale - 1) / scale + 2 * PAD);
+    usize(w, cfg.cols, cfg.rows);
     gtk_signal_connect(gl, "realize", GTK_SIGNAL_FUNC(realize), w);
     gtk_signal_connect(gl, "destroy", GTK_SIGNAL_FUNC(gone), w);
     gtk_signal_connect(gl, "configure_event", GTK_SIGNAL_FUNC(configure), w);

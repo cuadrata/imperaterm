@@ -195,11 +195,41 @@ place(Win *w)
     gtk_box_reorder_child(GTK_BOX(w->notebook->parent), w->notebook, cfg.tabsbelow ? 2 : 1);  /* the menubar is first */
 }
 
+/* A window that was made to fit its terminal again keeps its size, as it does otherwise. */
+static gboolean
+keepsize(gpointer data)
+{
+    GList *l;
+
+    (void)data;
+    for (l = wins; l; l = l->next)
+        gtk_window_set_policy(GTK_WINDOW(((Win *)l->data)->window), TRUE, TRUE, FALSE);
+    return FALSE;
+}
+
+/*
+ * The text is larger or smaller, and the windows with it: a terminal
+ * keeps its columns and rows, and the programs in it are not told of
+ * a new size. Where a window cannot change its size, being maximized
+ * or tiled, its terminal has more or fewer of them instead.
+ */
+static void
+refit(void)
+{
+    GList *l;
+
+    for (l = wins; l; l = l->next) {
+        gtk_window_set_policy(GTK_WINDOW(((Win *)l->data)->window), TRUE, TRUE, TRUE);  /* to shrink, too */
+        term_refit(l->data);
+    }
+    g_idle_add_full(GTK_PRIORITY_RESIZE + 1, keepsize, NULL, NULL);  /* once the windows have been sized */
+}
+
 static void
 apply(void)
 {
     static const uint8_t ramp[] = { 0, 95, 135, 175, 215, 255 };
-    int i, px = MAX((int)((cfg.size + zoom) * scale * 96 / 72.0 + 0.5), 4);
+    int i, px = MAX((int)((cfg.size + zoom) * scale * 96 / 72.0 + 0.5), 4), ow = cellw, oh = cellh;
     GList *l;
 
     for (i = 0; i < 16; i++)
@@ -216,6 +246,8 @@ apply(void)
         g_printerr(_("imperaterm: no font\n"));
         exit(1);
     }
+    if (cellw != ow || cellh != oh)
+        refit();
     for (l = tabs; l; l = l->next) {
         Tab *tb = l->data;
 

@@ -34,7 +34,8 @@ struct Win {
     Grid grid;
     int w, h, frame, focus, blinkoff, motion, hist, scr, rows;
     int writing;  /* the child has written what is not yet drawn */
-    guint drawtag, blinktag;
+    guint drawtag, blinktag, refittag;
+    int64_t refit;  /* until then, in microseconds, the window is sized to its terminal, which keeps its size meanwhile */
     int64_t lastdraw, began, held;  /* in microseconds: when a frame was last drawn, when the child began to write, and to hold its frame */
     char *primary, *clip;
 };
@@ -76,6 +77,7 @@ void join_listen(JoinOpen *fn);
 
 /* term.c */
 GtkWidget *term_new(Win *w);
+void term_refit(Win *w);
 Tab *tab_new(Win *w, const char *cwd, char **argv, char **env);
 void tab_show(Tab *tb);
 void tab_close(Tab *tb);
