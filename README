@@ -1,8 +1,6 @@
 Imperaterm
 ==========
 
-Copyright (C) 2026 The CGTK authors
-
 Imperaterm is a lightning fast terminal emulator for CGTK. It is minimal, but
 does have some QoL features: tabs, a scrollback, selections and a few settings.
 What it shows is drawn with OpenGL.
@@ -82,7 +80,7 @@ A tab says who is at the terminal and where, as a prompt does:
 with ~ for home. Of a long directory the tab shows the end, after three
 dots; the window's title has all of it. A program that sets a title, as
 some shells do at each prompt, has the tab called that. How the tab
-knows who and where is under Who and where, below.
+knows who and where is explained under Who and where, below.
 
 The right button on a tab has a menu, and Rename Tab in it gives the tab
 a custom name. The name lasts until the tab is closed and is saved nowhere.
@@ -192,55 +190,55 @@ One that gets no answer within five seconds runs on its own too.
 Who and where
 -------------
 
-A terminal cannot find out who is at it or where: it has to be told.
-What a system has for looking at another program is its own and no other
-system's, sees the shell that was started and not the one in use after
-su or ssh, and does not let a user see where root is. So the shell says
-it at each prompt, in two strings that other terminals read as well:
+The name on a tab, user@host: directory, comes from the shell. Imperaterm
+cannot work it out by itself. Each system has its own way of looking
+into another program, and even where there is one, it gives the wrong
+answer after su or ssh and no answer at all for root. So the shell tells
+the terminal at each prompt, with two escape sequences that other
+terminals understand as well:
 
   OSC 7     file://host/directory
   OSC 1337  RemoteHost=user@host
 
-Until a shell has said anything, a tab has the user Imperaterm runs as,
-this host, and the directory it started in. A shell that says nothing
-leaves the tab as it was. A new tab starts in the directory the tab that
-is shown was last told of on this host, or at home if it cannot go
-there.
+Until the shell says anything, the tab shows the user Imperaterm runs
+as, this host, and the directory the tab started in. If the shell never
+says anything, the tab stays that way. A new tab opens in the directory
+the current tab last reported, if that is on this host. If it cannot go
+there, it opens at home.
 
-imperaterm.sh has a shell say it. It is for sh, ash, dash, ksh, bash and
-zsh, and is installed in the imperaterm directory under share. Who reads
-it:
+The shell script imperaterm.sh does the telling. It works in sh, ash,
+dash, ksh, bash and zsh, and is installed as share/imperaterm/imperaterm.sh.
+It only speaks in a shell someone is typing at, and only when TERM begins
+with xterm, so it does no harm anywhere else. Which shells run it:
 
-  The shell imperaterm starts, unasked: bash by PROMPT_COMMAND in the
-  environment and sh, ash, dash and ksh by ENV, where those are not set
-  already. So does a shell that is given that environment, as after su.
+  The shell Imperaterm starts runs it with no setup. Imperaterm sets
+  PROMPT_COMMAND for bash, and ENV for sh, ash, dash and ksh, unless they
+  are set already. A shell that keeps that environment, as after su,
+  runs it too.
 
-  Login shells, if it is in /etc/profile.d: those of sudo -i, su - and
-  ssh. make install puts it in profile.d under sysconfdir, which is /etc
-  only if imperaterm was configured with --sysconfdir=/etc. Otherwise
-  copy it or link it there.
+  Login shells, such as those of su -, sudo -i and ssh, run it if it is
+  in /etc/profile.d. make install puts it in profile.d under sysconfdir,
+  which is /etc only if Imperaterm was configured with --sysconfdir=/etc.
+  Otherwise, copy or link it there yourself.
 
-  A shell that is neither, as after sudo -s or doas -s, reads only its
-  own files. For bash, this line in the system's bashrc or the user's
-  .bashrc, and for zsh in .zshrc:
+  Any other shell, such as that of sudo -s or doas -s, reads only its own
+  start-up files. For bash, add this line to the system's bashrc or to
+  ~/.bashrc. For zsh, add it to ~/.zshrc:
 
     . /etc/profile.d/imperaterm.sh
 
-  An ash started so reads no file at all, and says nothing.
+  If your .bashrc sets PROMPT_COMMAND itself, put the line after that.
+  An ash started this way reads no start-up file, so it cannot tell.
 
-  bash whose .bashrc sets PROMPT_COMMAND anew needs the same line after
-  that.
-
-  fish, in config.fish:
+  fish cannot read the script. Put this in config.fish instead:
 
     function __imperaterm_report --on-event fish_prompt
         printf '\e]7;file://%s%s\a\e]1337;RemoteHost=%s@%s\a' $hostname \
             (string escape --style=url -- $PWD) $USER $hostname
     end
 
-On another host the same file has the tab say who and where there, when
-it is reached with ssh. It keeps quiet unless the shell is one a person
-types at and TERM begins with xterm.
+To see the user, host and directory on another machine you reach with
+ssh, put the script in /etc/profile.d on that machine too.
 
 
 How it draws
