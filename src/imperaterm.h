@@ -48,6 +48,8 @@ struct Tab {
     Term *vt;
     pid_t pid;
     int fd, rtag, wtag;
+    guint telltag;  /* the window has another size, which the terminal takes once the window keeps it */
+    int wantc, wantr;  /* that size, in columns and rows */
     char *name, *title;  /* what the user called it, and the title its child set */
     /*
      * Who is at the terminal and where, as the shell has said: the user

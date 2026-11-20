@@ -46,6 +46,17 @@ static int *glattr;
  */
 enum { LULL = 500, LATEST = 16000, HELD = 150000 };
 
+/*
+ * A shell redraws its prompt when the terminal has a new size, counting
+ * on the rows it had. Changed again before what it drew for the last
+ * size is there, as when a window is dragged to another size, the
+ * terminal and the shell no longer agree on those rows, and pieces of
+ * the prompt are left behind. So the terminal takes a new size, and the
+ * child is told of it, once the window has kept it for SETTLE, in
+ * microseconds; meanwhile it is drawn as it was.
+ */
+enum { SETTLE = 100000 };
+
 /* How long a window has to become the size it is asked to be, when its text changes size. */
 enum { REFIT = 300000 };
 
@@ -78,13 +89,43 @@ usize(Win *w, int cols, int rows)
     gtk_widget_set_usize(w->gl, (cols * cellw + scale - 1) / scale + 2 * PAD, (rows * cellh + scale - 1) / scale + 2 * PAD);
 }
 
-/* The terminal takes the size its window has. */
+/* The columns and rows the window has room for. */
+static void
+room(Win *w, int *cols, int *rows)
+{
+    int pad = PAD * scale;
+
+    *cols = MAX((w->w - 2 * pad) / cellw, 2);
+    *rows = MAX((w->h - 2 * pad) / cellh, 1);
+}
+
+/* The window has kept its size: the terminal takes it, and the child is told. */
+static gboolean
+settled(gpointer data)
+{
+    Tab *tb = data;
+    int cols, rows;
+
+    tb->telltag = 0;
+    room(tb->win, &cols, &rows);
+    if (cols != tb->vt->cols || rows != tb->vt->rows) {
+        struct winsize ws = { rows, cols, cols * cellw, rows * cellh };
+
+        vt_resize(tb->vt, cols, rows);
+        ioctl(tb->fd, TIOCSWINSZ, &ws);
+        tab_damage(tb);
+    }
+    return FALSE;
+}
+
+/* The terminal takes the size its window has, once the window keeps it. */
 static void
 fit(Tab *tb)
 {
     Win *w = tb->win;
-    int pad = PAD * scale, cols = MAX((w->w - 2 * pad) / cellw, 2), rows = MAX((w->h - 2 * pad) / cellh, 1);
-    struct winsize ws = { rows, cols, cols * cellw, rows * cellh };
+    int cols, rows;
+
+    room(w, &cols, &rows);
 
     if (w->refit) {  /* the window is not yet the size asked for: the terminal keeps the size it has */
         if (cols == tb->vt->cols && rows == tb->vt->rows)
@@ -96,9 +137,11 @@ fit(Tab *tb)
             usize(w, cfg.cols, cfg.rows);
         }
     }
-    if (w->w && (cols != tb->vt->cols || rows != tb->vt->rows)) {
-        vt_resize(tb->vt, cols, rows);
-        ioctl(tb->fd, TIOCSWINSZ, &ws);
+    if (w->w && (cols != tb->vt->cols || rows != tb->vt->rows) && (cols != tb->wantc || rows != tb->wantr || !tb->telltag)) {
+        if (tb->telltag)
+            g_source_remove(tb->telltag);
+        tb->wantc = cols, tb->wantr = rows;
+        tb->telltag = later(SETTLE, settled, tb);
     }
 }
 
@@ -967,6 +1010,8 @@ tabfree(gpointer data)
     gdk_input_remove(tb->rtag);
     if (tb->wtag)
         gdk_input_remove(tb->wtag);
+    if (tb->telltag)
+        g_source_remove(tb->telltag);
     if (tb->namewin)
         gtk_widget_destroy(tb->namewin);
     close(tb->fd);  /* which hangs the child up */
